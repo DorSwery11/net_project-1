@@ -74,11 +74,11 @@ class ChatClient:
         
         # Main loop for sending messages
         self.print_help()
-        print("\nType a message to send to everyone, or use commands (type 'help' for commands, 'quit' to exit):\n")
+        print()  # Empty line for spacing
         
         try:
             while self.running:
-                user_input = input().strip()
+                user_input = input("Your message: ").strip()
                 
                 if not user_input:
                     continue
@@ -143,19 +143,27 @@ class ChatClient:
             if len(parts) == 3:
                 sender_name = parts[1]
                 message_content = parts[2]
-                print(f"\n[{sender_name}]: {message_content}\n")
+                print(f"\n[{sender_name}]: {message_content}")
+                sys.stdout.write("Your message: ")
+                sys.stdout.flush()
         
         elif message.startswith("STATUS:"):
             status = message.split(":", 1)[1]
-            print(f"\n[Server]: {status}\n")
+            print(f"\n[Server]: {status}")
+            sys.stdout.write("Your message: ")
+            sys.stdout.flush()
         
         elif message.startswith("CLIENT_LIST:"):
             client_list = message.split(":", 1)[1]
-            print(f"\nAvailable clients: {client_list}\n")
+            print(f"\nAvailable clients: {client_list}")
+            sys.stdout.write("Your message: ")
+            sys.stdout.flush()
         
         elif message.startswith("ERROR:"):
             error = message.split(":", 1)[1]
-            print(f"\n[Error]: {error}\n")
+            print(f"\n[Error]: {error}")
+            sys.stdout.write("Your message: ")
+            sys.stdout.flush()
     
     def broadcast_message(self, message: str):
         """

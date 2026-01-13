@@ -111,13 +111,9 @@ class ChatClientGUI:
         input_frame = tk.Frame(self.root, bg=bg_color)
         input_frame.pack(fill=tk.X, padx=10, pady=10)
         
-        # Message entry field
-        entry_label = tk.Label(input_frame, text="Your message:", bg=bg_color, font=("Arial", 9))
-        entry_label.pack(anchor="w")
-        
-        # Target entry field (optional)
+        # Target entry field (optional) - FIRST
         target_label = tk.Label(input_frame, text="Target (optional, leave empty to broadcast):", bg=bg_color, font=("Arial", 9))
-        target_label.pack(anchor="w", pady=(8, 0))
+        target_label.pack(anchor="w")
         
         target_container = tk.Frame(input_frame, bg=bg_color)
         target_container.pack(fill=tk.X, pady=(5, 0))
@@ -130,8 +126,12 @@ class ChatClientGUI:
         )
         self.target_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 10))
         
+        # Message entry field - SECOND
+        entry_label = tk.Label(input_frame, text="Your message:", bg=bg_color, font=("Arial", 9))
+        entry_label.pack(anchor="w", pady=(10, 0))
+        
         entry_container = tk.Frame(input_frame, bg=bg_color)
-        entry_container.pack(fill=tk.X, pady=(10, 0))
+        entry_container.pack(fill=tk.X, pady=(5, 0))
         
         self.message_entry = tk.Entry(
             entry_container,
